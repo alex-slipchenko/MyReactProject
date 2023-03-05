@@ -7,19 +7,16 @@ import logo from './RozetkaCircle.svg'
 function MyForm() {
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
-    const [showPassword, setShowPassword] = useState(false);
-    // const [myState, setMyState] = useState(null)
+    const [isPasswordShown, setIsPasswordShown] = useState(false)
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const passwordValue = new PasswordInput;
         const data = {
             name: name,
-            pass: passwordValue.handlePasswordChange()
+            pass: password
         }
 
-
-        // console.log(data);
+        console.log(data);
         // fetch(`http://localhost:3000/pasword/login`, {
         //     method: 'POST',
         //     body: { data }
@@ -40,9 +37,8 @@ function MyForm() {
                 <div className='input_wrap'>
                     <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="User Name" />
                 </div>
-                {/* state={myState} setMyState={setMyState} */}
 
-                <PasswordInput type={showPassword} setSHow={setShowPassword} value={password} onChange={(e) => setPassword(e.target.value)} />
+                <PasswordInput isPasswordShown={isPasswordShown} setIsPasswordShown={setIsPasswordShown} value={password} onChange={(e) => setPassword(e.target.value)} />
                 <div className='input_wrap'> <button type="submit" className='form__button'>Login</button></div>
 
             </div>
