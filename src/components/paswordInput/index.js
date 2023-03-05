@@ -1,39 +1,38 @@
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
+// import React, { useState } from 'react';
+// import React from 'react';
 import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
 import './style.css';
 
-class PasswordInput extends Component {
-    state = {
-        password: '',
-        showPassword: false,
+function PasswordInput(props) {
 
-    };
+    // myprops============
+    // console.log(props.type);
+    // console.log(props.setSHow);
+    // console.log(props.value);
 
-    handlePasswordChange = (event) => {
-        this.setState({ password: event.target.value });
-    };
+    const handleTogglePassword = () => {
+        if (props.type) {
+            return props.setSHow(false);
+        }
+        return props.setSHow(true)
 
-    handleTogglePassword = () => {
-        this.setState((prevState) => ({ showPassword: !prevState.showPassword }));
-    };
-
-    render() {
-        const { password, showPassword, } = this.state;
-
-        return (
-            <div className='input_wrap'>
-                <input type={showPassword ? 'text' : 'password'}
-                    value={password}
-                    onChange={this.handlePasswordChange} placeholder="Password" />
-                <i onClick={this.handleTogglePassword}>
-                    {showPassword ? <BsFillEyeFill className='eye' /> : <BsFillEyeSlashFill className='eye' />}
-
-                </i>
-            </div>
-
-
-        );
     }
+
+    return (
+        <div className='input_wrap'>
+            <input type={(props.type) ? 'text' : 'password'}
+                value={props.value}
+                onChange={props.onChange} placeholder="Password" />
+            <i onClick={handleTogglePassword}>
+                {props.type ? <BsFillEyeFill className='eye' /> : <BsFillEyeSlashFill className='eye' />}
+
+            </i>
+        </div>
+
+
+    );
 }
+
 
 export default PasswordInput;
